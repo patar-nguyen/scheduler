@@ -7,7 +7,7 @@ import "components/Appointment/styles.scss"
 export default function Appointment(props) {
   return (
     <article className="appointment">
-      {props.time ? `Appointment at ${props.time}` : `No Appointments`}
+      {/* {props.time ? `Appointment at ${props.time}` : `No Appointments`} */}
       <Header time={props.time}/>
       {props.interview ? <Show student={props.interview.student} interviewer={props.interview.interviewer}/> : <Empty />}
 
