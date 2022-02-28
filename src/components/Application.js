@@ -114,6 +114,10 @@ export default function Application(props) {
     axios.put(`/api/appointments/${id}`, {...appointment});
   }
 
+  function cancelInterview(id) {
+    axios.delete(`/api/appointments/${id}`);
+  }
+
   const appointments = getAppointmentsForDay(state, state.day);
 
   const schedule = appointments.map((appointment) => {
@@ -128,6 +132,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={getInterviewersForDay(state, state.day)}
         bookInterview = {bookInterview}
+        cancelInterview = {cancelInterview}
       />
     );
   });
