@@ -111,11 +111,11 @@ export default function Application(props) {
 
     setState({...state, appointments: appointments});
 
-    axios.put(`/api/appointments/${id}`, {...appointment});
+    return axios.put(`/api/appointments/${id}`, {...appointment});
   }
 
   function cancelInterview(id) {
-    axios.delete(`/api/appointments/${id}`);
+    return axios.delete(`/api/appointments/${id}`);
   }
 
   const appointments = getAppointmentsForDay(state, state.day);
