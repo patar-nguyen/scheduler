@@ -36,19 +36,32 @@ export default function useApplicationData() {
       [id]: appointment
     };
   
-    setState({...state, appointments: appointments});
-  
-    return axios.put(`/api/appointments/${id}`, {...appointment});
+    // setState({...state, appointments: appointments});
+    return axios.put(`/api/appointments/${id}`, appointment)
+    .then(() => {
+      setState({...state, appointments: appointments});
+    })
+    .then(() => updateSpots());
   }
   
   function cancelInterview(id) {
-    return axios.delete(`/api/appointments/${id}`);
+    return axios.delete(`/api/appointments/${id}`)
+    .then(() => updateSpots());
+  }
+
+  function updateSpots() {
+    axios.get('/api/days/')
+    .then((response) => {
+      setState((prev) => (
+        {...prev, days: response.data}
+      ))
+    })
   }
 
   return {
     state,
     setDay,
     bookInterview,
-    cancelInterview
+    cancelInterview,
   }
 }
