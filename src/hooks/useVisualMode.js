@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 
 export default function useVisualMode(initial) {
-  const[mode/*string of actions (empty, add, etc)*/, setMode] = useState(initial);
-  const [history/*array of previous modes*/, setHistory] = useState([initial]); // This line is new!
+  const[mode, setMode] = useState(initial);
+  const [history, setHistory] = useState([initial]); 
 
   function transition(newMode, replace = false) {
     
