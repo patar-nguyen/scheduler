@@ -11,7 +11,6 @@ export default function useApplicationData() {
   
   const setDay = (day) => setState({ ...state, day });
   
-  
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -21,11 +20,11 @@ export default function useApplicationData() {
   
       setState(prev => ({...prev, days: response[0].data, appointments: response[1].data, interviewers: response[2].data}));
     });
-    // axios.get("/api/days")
-    //   .then(response => setDays(response.data));
+
   }, []);
   
-  function bookInterview(id, interview) {
+  //Once form is saved, interview will be displayed onto screen
+  function bookInterview(id, interview, daysIndex) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -36,26 +35,45 @@ export default function useApplicationData() {
       [id]: appointment
     };
   
-    // setState({...state, appointments: appointments});
+    let newState = {...state};
+    newState = {...newState, appointments: appointments}
+    newState = {...newState, days: updateSpots(newState, daysIndex)};
+
     return axios.put(`/api/appointments/${id}`, appointment)
-    .then(() => {
-      setState({...state, appointments: appointments});
-    })
-    .then(() => updateSpots());
+      .then(() => {setState({...newState});})
   }
   
-  function cancelInterview(id) {
+  //User can cancel their appointment by clicking cancel button
+  async function cancelInterview(id, daysIndex) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };  
+  
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    let newState = {...state};
+    newState = {...newState, appointments: appointments}
+    newState = {...newState, days: updateSpots(newState, daysIndex)};
+
     return axios.delete(`/api/appointments/${id}`)
-    .then(() => updateSpots());
+    .then(() => {setState({...newState});})
   }
 
-  function updateSpots() {
-    axios.get('/api/days/')
-    .then((response) => {
-      setState((prev) => (
-        {...prev, days: response.data}
-      ))
-    })
+  //Updates the amount of interview spots remaining for each day
+  function updateSpots(state, daysIndex) {
+    let days = [...state.days];
+    let spots = 0;
+
+    days[daysIndex].appointments.forEach((appointment) => {
+      state.appointments[appointment].interview ? spots += 0 : spots += 1;
+    });
+
+    days[daysIndex].spots = spots;
+    return days;
   }
 
   return {

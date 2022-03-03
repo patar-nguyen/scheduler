@@ -10,9 +10,7 @@ import useVisualMode from "hooks/useVisualMode";
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
-  // const setDays = (days) => {
-  //   setState(prev => ({...prev, days}));
-  // }
+
   const {
     state,
     setDay,
@@ -24,7 +22,7 @@ export default function Application(props) {
 
   const schedule = appointments.map((appointment) => {
 
-    const interview = getInterview(state, appointment.interview);
+  const interview = getInterview(state, appointment.interview);
   
     return (
       <Appointment
@@ -35,6 +33,7 @@ export default function Application(props) {
         interviewers={getInterviewersForDay(state, state.day)}
         bookInterview = {bookInterview}
         cancelInterview = {cancelInterview}
+        day = {state.day}
       />
     );
   });

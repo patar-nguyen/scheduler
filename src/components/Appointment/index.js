@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
@@ -18,12 +18,31 @@ export default function Appointment(props) {
   const CONFIRM = "CONFIRMATION";
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
-  const ERROR_DELETE ="ERROR_DELETE";
+  const ERROR_DELETE = "ERROR_DELETE";
+
+  let daysIndex;
+  //Sets the day index depending on the day
+  if(props.day === "Monday") {
+    daysIndex = 0;
+  } else if (props.day === "Tuesday") {
+    daysIndex = 1;
+  } else if (props.day === "Wednesday") {
+    daysIndex = 2;
+  } else if (props.day === "Thursday") {
+    daysIndex = 3;
+  } else if (props.day === "Friday") {
+    daysIndex = 4;
+  }
+
+  useEffect(() => {
+    console.log(props.interview);
+  }, [props.interview])
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
+  //Saving interview after filling out the form 
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -33,15 +52,16 @@ export default function Appointment(props) {
     transition(SAVING);
   
     props
-      .bookInterview(props.id, interview)
+      .bookInterview(props.id, interview, daysIndex)
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
   }
 
+  //Delete an interview
   function destroy(event) {
     transition(DELETE, true);
     props
-     .cancelInterview(props.id)
+     .cancelInterview(props.id, daysIndex)
      .then(() => transition(EMPTY))
      .catch(error => transition(ERROR_DELETE, true));
    }
