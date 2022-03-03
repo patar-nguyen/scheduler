@@ -1,8 +1,18 @@
 # Interview Scheduler
+Interview Scheduler is an application that allows users to book interviews from Monday to Friday. Interviews can be booked, edited, or deleted. Interviews can be booked by typing in a name and selecting an interviewer from a list of available interviewers. The application makes API requests to load and display data.
 
 ## Setup
 
 Install dependencies with `npm install`.
+
+## Dependencies
+- axios 
+- storybook
+- babel
+- node-sass
+- cypress
+- jest
+- react
 
 ## Running Webpack Development Server
 
