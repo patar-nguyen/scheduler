@@ -22,6 +22,6 @@ npm test
 npm run storybook
 ```
 ## Screenshots
-!["Creating an appointment"] https://github.com/patar-nguyen/scheduler/blob/master/docs/Create.jpg?raw=true
-!["Deleting an appointment"] https://github.com/patar-nguyen/scheduler/blob/master/docs/Delete.jpg?raw=true
-!["Error Handling"] https://github.com/patar-nguyen/scheduler/blob/master/docs/Error%20Handling.jpg?raw=true
+["Creating an appointment"] (https://github.com/patar-nguyen/scheduler/blob/master/docs/Create.jpg?raw=true)
+["Deleting an appointment"] (https://github.com/patar-nguyen/scheduler/blob/master/docs/Delete.jpg?raw=true)
+["Error Handling"] (https://github.com/patar-nguyen/scheduler/blob/master/docs/Error%20Handling.jpg?raw=true)
