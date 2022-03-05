@@ -1,5 +1,6 @@
 import React from 'react';
 
+//When saving or deleting will display image with message saying deleting or saving
 export default function Status(props) {
   return(
     <main className="appointment__card appointment__card--status">

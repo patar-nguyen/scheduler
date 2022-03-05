@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import InterviewListItem from "components/InterviewerListItem";
 import "components/InterviewerList.scss";
 
+//Lists of available interviewers 
 export default function InterviewerList(props) {
   return (
     <section className="interviewers">

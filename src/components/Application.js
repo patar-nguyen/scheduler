@@ -11,6 +11,7 @@ import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
 
+  //using custom hook
   const {
     state,
     setDay,

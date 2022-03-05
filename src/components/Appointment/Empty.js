@@ -1,6 +1,7 @@
 import { process_params } from 'express/lib/router';
 import React from 'react';
 
+//Empty interview spot with option to add interview
 export default function Empty (props) {
   return (
     <main className="appointment__add">

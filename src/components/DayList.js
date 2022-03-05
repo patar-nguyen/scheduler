@@ -2,6 +2,7 @@ import React from "react";
 import "components/DayListItem.scss";
 import DayListItem from "components/DayListItem.js";
 
+//Displays information of each day on the list
 export default function DayList(props) {
   return (
     <ul>
