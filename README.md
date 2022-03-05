@@ -17,6 +17,7 @@ Install dependencies with `npm install`.
 - scheduler-api (https://github.com/patar-nguyen/scheduler-api)
 
 ## Install scheduler-api
+Scheduler API required to access database
 ![Scheduler-API](https://github.com/patar-nguyen/scheduler-api)
 
 ## Running Webpack Development Server
