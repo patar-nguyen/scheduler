@@ -14,6 +14,10 @@ Install dependencies with `npm install`.
 - cypress
 - jest
 - react
+- scheduler-api (https://github.com/patar-nguyen/scheduler-api)
+
+## Install scheduler-api
+![Scheduler-API](https://github.com/patar-nguyen/scheduler-api)
 
 ## Running Webpack Development Server
 

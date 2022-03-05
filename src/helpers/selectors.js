@@ -1,4 +1,3 @@
-import { startSession } from "pg/lib/sasl";
 
 export function getAppointmentsForDay(state, day) {
   const filteredNames = state.days.filter(xday => xday.name === day);
